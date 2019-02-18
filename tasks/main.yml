@@ -12,6 +12,7 @@
         name: "web-app{{ item }}"
         recreate: yes
         image: shlepanets/epam-exam:exam-im-latest
+        hostname: "web-app{{ item }}"
         ports:
           - "500{{ item}}:5000"
         networks: 
