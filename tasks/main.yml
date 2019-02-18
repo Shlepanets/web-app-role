@@ -14,5 +14,6 @@
         image: shlepanets/epam-exam:exam-im-latest
         ports:
           - "500{{ item}}:5000"
-        networks: docker_CD
+        networks: 
+          - name: docker_CD
       with_sequence: count=3
