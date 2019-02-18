@@ -1,0 +1,20 @@
+
+#    - name: Create a web-app container 
+#      become: yes 
+#      become_method: sudo
+#      docker_container:
+#        name: web-app
+#        image: shlepanets/epam-exam:exam-im-latest
+#        ports:
+#          - "5001:5000"
+ 
+    - name: Create a web-app container 
+      become: yes 
+      become_method: sudo
+      docker_container:
+        name: "web-app{{ item }}"
+        recreate: yes
+        image: shlepanets/epam-exam:exam-im-latest
+        ports:
+          - "500{{ item}}:5000"
+      with_sequence: count=3
