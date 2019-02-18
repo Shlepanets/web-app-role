@@ -1,13 +1,10 @@
+    - name: Create a network
+      become: yes
+      become_method: sudo
+      docker_network:
+        name: docker_CD
+        state: present
 
-#    - name: Create a web-app container 
-#      become: yes 
-#      become_method: sudo
-#      docker_container:
-#        name: web-app
-#        image: shlepanets/epam-exam:exam-im-latest
-#        ports:
-#          - "5001:5000"
- 
     - name: Create a web-app container 
       become: yes 
       become_method: sudo
@@ -17,4 +14,5 @@
         image: shlepanets/epam-exam:exam-im-latest
         ports:
           - "500{{ item}}:5000"
+        networks: docker_CD
       with_sequence: count=3
